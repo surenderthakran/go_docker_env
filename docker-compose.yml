@@ -1,0 +1,9 @@
+version: '2'
+services:
+  app:
+    build: .
+    command: make run
+    volumes:
+      - ./src:/workspace/src
+    logging:
+      driver: 'json-file'
