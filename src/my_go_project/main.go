@@ -2,16 +2,16 @@ package main
 
 import (
   "fmt"
-
-  "my_go_project/gmath"
-  "my_go_project/gstring"
+  "html"
+  "log"
+  "net/http"
 )
 
 func main() {
-    fmt.Printf("hello, world\n")
+    http.HandleFunc("/get", func(w http.ResponseWriter, r *http.Request) {
+        fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+    })
 
-    fmt.Println(gmath.AddIntegers(2, 3))
-    fmt.Println(gmath.SubtractIntegers(8, 5))
-
-    fmt.Println(gstring.AddStrings("apple", "orange"))
+    err := http.ListenAndServe(":8080", nil)  // Note: Not "localhost:8080" but ":8080"
+    log.Fatal(err)
 }
