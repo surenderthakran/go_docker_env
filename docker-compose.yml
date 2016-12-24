@@ -5,5 +5,7 @@ services:
     command: make run
     volumes:
       - ./src:/workspace/src
+    ports:
+      - "18770:18770"
     logging:
       driver: 'json-file'
