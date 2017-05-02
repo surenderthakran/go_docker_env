@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"html"
 	"log"
 	"net/http"
 )
@@ -10,7 +9,8 @@ import (
 func main() {
 	http.HandleFunc("/get", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("inside /get")
-		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+		fmt.Println(r)
+		fmt.Fprintf(w, "Hello, %q", r.URL.Query()["name"][0])
 	})
 
 	err := http.ListenAndServe(":18770", nil) // Note: Not "localhost:8080" but ":8080"
