@@ -4,7 +4,9 @@ services:
     build: .
     command: make run
     volumes:
-      - ./src:/workspace/src
+      - ./src/my_go_project:/workspace/src/my_go_project
+    environment:
+      CODE_ENV: dev
     ports:
       - "18770:18770"
     logging:
