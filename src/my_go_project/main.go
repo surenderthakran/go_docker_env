@@ -14,6 +14,6 @@ func main() {
 		fmt.Fprintf(w, "Hello, %q", name)
 	})
 
-	err := http.ListenAndServe(":18770", nil) // Note: Not "localhost:8080" but ":8080"
+	err := http.ListenAndServe(":18770", nil) // Note: Not "localhost:18770" but ":18770"
 	log.Fatal(err)
 }
