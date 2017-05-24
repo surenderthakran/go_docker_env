@@ -11,9 +11,13 @@ func main() {
 		fmt.Println("inside /get")
 		fmt.Println(r)
 		name := r.URL.Query()["name"][0]
-		fmt.Fprintf(w, "Hello, %q", name)
+		fmt.Fprintf(w, "Hello, %q\nYour lucky number is: %d", name, generateLuckyNumber(name))
 	})
 
 	err := http.ListenAndServe(":18770", nil) // Note: Not "localhost:18770" but ":18770"
 	log.Fatal(err)
+}
+
+func generateLuckyNumber(name string) int {
+	return len(name)
 }
