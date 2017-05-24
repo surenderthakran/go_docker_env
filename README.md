@@ -36,4 +36,5 @@ These will also start [reflex](https://github.com/cespare/reflex) watcher to res
 Restarting the service involves:
 - Running `gofmt` on all files under `src/my_go_project`
 - Installing service
+- Running test cases
 - Running service

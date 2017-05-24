@@ -8,8 +8,6 @@ import (
 
 func main() {
 	http.HandleFunc("/get", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println("inside /get")
-		fmt.Println(r)
 		name := r.URL.Query()["name"][0]
 		fmt.Fprintf(w, "Hello, %q\nYour lucky number is: %d", name, generateLuckyNumber(name))
 	})
@@ -18,6 +16,7 @@ func main() {
 	log.Fatal(err)
 }
 
+// Function to return a lucky number for a given name.
 func generateLuckyNumber(name string) int {
 	return len(name)
 }
