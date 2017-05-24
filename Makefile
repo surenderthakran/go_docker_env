@@ -9,9 +9,11 @@ go_prep_install:
 	go get github.com/cespare/reflex
 
 go_install:
+	@echo Compiling $(GO_PROJECT_NAME)....
 	go install $(GO_PROJECT_NAME)
 
 go_run:
+	@echo Running $(GO_PROJECT_NAME)....
 	$(GOPATH)/bin/$(GO_PROJECT_NAME)
 
 # Project rules
@@ -27,8 +29,8 @@ else
 endif
 
 restart:
-	$(MAKE) go_format
-	$(MAKE) go_install
-	$(MAKE) go_run
+	@$(MAKE) go_format
+	@$(MAKE) go_install
+	@$(MAKE) go_run
 
 .PHONY: go_format go_prep_install go_install go_run install run restart
