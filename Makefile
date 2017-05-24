@@ -2,6 +2,7 @@ GO_PROJECT_NAME := my_go_project
 
 # Go rules
 go_format:
+	@echo "\n....Formatting $(GO_PROJECT_NAME)'s go files...."
 	gofmt -w $(GOPATH)/src/$(GO_PROJECT_NAME)
 
 go_prep_install:
@@ -9,15 +10,15 @@ go_prep_install:
 	go get github.com/cespare/reflex
 
 go_install:
-	@echo Compiling $(GO_PROJECT_NAME)....
+	@echo "\n....Compiling $(GO_PROJECT_NAME)...."
 	go install $(GO_PROJECT_NAME)
 
 go_test:
-        @echo Running tests for $(GO_PROJECT_NAME)...
-        go test ./src/$(GO_PROJECT_NAME)/...
+	@echo "\n....Running tests for $(GO_PROJECT_NAME)...."
+	go test ./src/$(GO_PROJECT_NAME)/...
 
 go_run:
-	@echo Running $(GO_PROJECT_NAME)....
+	@echo "\n....Running $(GO_PROJECT_NAME)...."
 	$(GOPATH)/bin/$(GO_PROJECT_NAME)
 
 # Project rules
