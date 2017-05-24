@@ -2,7 +2,7 @@ version: '2'
 services:
   app:
     build: .
-    command: make run
+    command: make --no-print-directory run
     volumes:
       - ./src/my_go_project:/workspace/src/my_go_project
     environment:
