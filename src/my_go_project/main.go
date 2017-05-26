@@ -4,11 +4,19 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	logrus "github.com/Sirupsen/logrus"
 )
 
 func main() {
 	http.HandleFunc("/get", func(w http.ResponseWriter, r *http.Request) {
 		name := r.URL.Query()["name"][0]
+
+		logrus.WithFields(logrus.Fields{
+			"request": "/get",
+			"name":    name,
+		}).Info("A new /get request received!")
+
 		fmt.Fprintf(w, "Hello, %q\nYour lucky number is: %d", name, generateLuckyNumber(name))
 	})
 
