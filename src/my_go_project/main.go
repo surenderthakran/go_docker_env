@@ -1,22 +1,23 @@
 package main
 
 import (
+	"flag"
 	"fmt"
+	glog "github.com/golang/glog"
 	"log"
 	"net/http"
-
-	logrus "github.com/Sirupsen/logrus"
 )
 
 func main() {
+	// Overriding glog's logtostderr flag's value to print logs to stderr.
+	flag.Lookup("logtostderr").Value.Set("true")
+	// Calling flag.Parse() so that all flag changes are picked.
+	flag.Parse()
+
 	http.HandleFunc("/get", func(w http.ResponseWriter, r *http.Request) {
+		glog.Info("A new /get request received!")
+
 		name := r.URL.Query()["name"][0]
-
-		logrus.WithFields(logrus.Fields{
-			"request": "/get",
-			"name":    name,
-		}).Info("A new /get request received!")
-
 		fmt.Fprintf(w, "Hello, %q\nYour lucky number is: %d", name, generateLuckyNumber(name))
 	})
 
