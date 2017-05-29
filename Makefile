@@ -21,7 +21,8 @@ go_install:
 
 go_test:
 	@echo "\n....Running tests for $(GO_PROJECT_NAME)...."
-	go test ./src/$(GO_PROJECT_NAME)/...
+	# Run tests on all packages except those in vendor
+	go test `go list ./... | grep $(GO_PROJECT_NAME) | grep -v /vendor/`
 
 go_run:
 	@echo "\n....Running $(GO_PROJECT_NAME)...."
