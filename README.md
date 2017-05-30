@@ -5,6 +5,7 @@
 - Runs on `Go 1.7.3`
 - Docker images based on `Ubuntu 16.04`
 - Architecture and dependencies are encapsulated in [docker](https://www.docker.com/) images hence making the dev and production environment COMPLETELY independent of host machine.
+- Package dependencies are auto installed on image creation.
 - In Development Environment:
     - Provides simple development environment setup with docker-compose.
     - Provides save detection and auto restart using [reflex](https://github.com/cespare/reflex).
@@ -38,3 +39,5 @@ Restarting the service involves:
 - Installing service
 - Running test cases
 - Running service
+
+**Note: When a new dependency is added, it is imperative to run `docker-compose build` again**
