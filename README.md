@@ -1,7 +1,7 @@
-##Go Docker Environment
+## Go Docker Environment
 [http://surenderthakran.com](http://surenderthakran.com)
 
-###Salient Features:
+### Salient Features:
 - Runs on `Go 1.7.3`
 - Docker images based on `Ubuntu 16.04`
 - Architecture and dependencies are encapsulated in [docker](https://www.docker.com/) images hence making the dev and production environment COMPLETELY independent of host machine.
@@ -10,13 +10,13 @@
     - Provides simple development environment setup with docker-compose.
     - Provides save detection and auto restart using [reflex](https://github.com/cespare/reflex).
 
-###How To Use:
-####To build docker image for the go application:
+### How To Use:
+#### To build docker image for the go application:
 ```
 docker build -t go_app .
 ```
 
-####To run docker container:
+#### To run docker container:
 ```
 docker run -it -d --name go_app_1 --net=host go_app
 ```
@@ -27,7 +27,7 @@ To listen on a different port (ex: `80`) run:
 docker run -it -d --name go_app_1 -p 80:18770 go_app
 ```
 
-####To set up development environment:
+#### To set up development environment:
 ```
 docker-compose build
 docker-compose up
