@@ -1,3 +1,0 @@
-package: my_go_project
-import:
-- package: github.com/golang/glog

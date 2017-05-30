@@ -9,11 +9,10 @@ go_prep_install:
 	@echo "\n....Preparing installation environment for $(GO_PROJECT_NAME)...."
 	mkdir -p $(GOPATH)/bin $(GOPATH)/pkg
 	go get github.com/cespare/reflex
-	curl https://glide.sh/get | sh
 
 go_dep_install:
 	@echo "\n....Installing dependencies for $(GO_PROJECT_NAME)...."
-	cd $(GOPATH)/src/$(GO_PROJECT_NAME) && glide install
+	go get ./...
 
 go_install:
 	@echo "\n....Compiling $(GO_PROJECT_NAME)...."
@@ -21,8 +20,7 @@ go_install:
 
 go_test:
 	@echo "\n....Running tests for $(GO_PROJECT_NAME)...."
-	# Run tests on all packages except those in vendor
-	go test `go list ./... | grep $(GO_PROJECT_NAME) | grep -v /vendor/`
+	go test ./src/$(GO_PROJECT_NAME)/...
 
 go_run:
 	@echo "\n....Running $(GO_PROJECT_NAME)...."
@@ -37,9 +35,6 @@ install:
 
 run:
 ifeq ($(CODE_ENV), dev)
-	# Reinstalling dependencies because the project folder is being mounted from
-	# host, this removes vendor folder from inside the container.
-	cd $(GOPATH)/src/$(GO_PROJECT_NAME) && glide install
 	reflex -s -g 'src/$(GO_PROJECT_NAME)/*.go' make restart
 else
 	$(MAKE) go_run
