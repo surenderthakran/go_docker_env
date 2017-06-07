@@ -27,5 +27,6 @@ func main() {
 
 // Function to return a lucky number for a given name.
 func generateLuckyNumber(name string) int {
+	// Not really generating a lucky number here, just returning length of the string.
 	return len(name)
 }
