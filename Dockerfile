@@ -9,6 +9,6 @@ ADD ./ $GOPATH
 
 WORKDIR $GOPATH
 
-RUN make install
+RUN make --no-print-directory install
 
-CMD make run
+CMD make --no-print-directory run
