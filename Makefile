@@ -35,7 +35,7 @@ install:
 
 run:
 ifeq ($(CODE_ENV), dev)
-	reflex -s -g 'src/$(GO_PROJECT_NAME)/*.go' make restart
+	reflex -r '\.go$\' -s make restart
 else
 	$(MAKE) go_run
 endif
