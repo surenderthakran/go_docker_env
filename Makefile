@@ -12,7 +12,7 @@ go_prep_install:
 
 go_dep_install:
 	@echo "\n....Installing dependencies for $(GO_PROJECT_NAME)...."
-	go get -t ./...
+	go get -t -v ./...
 
 go_install:
 	@echo "\n....Compiling $(GO_PROJECT_NAME)...."
@@ -20,7 +20,7 @@ go_install:
 
 go_test:
 	@echo "\n....Running tests for $(GO_PROJECT_NAME)...."
-	go test ./src/$(GO_PROJECT_NAME)/...
+	go test -v ./src/$(GO_PROJECT_NAME)/...
 
 go_run:
 	@echo "\n....Running $(GO_PROJECT_NAME)...."
