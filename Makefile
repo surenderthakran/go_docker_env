@@ -12,7 +12,7 @@ go_prep_install:
 
 go_dep_install:
 	@echo "\n....Installing dependencies for $(GO_PROJECT_NAME)...."
-	go get ./...
+	go get -t ./...
 
 go_install:
 	@echo "\n....Compiling $(GO_PROJECT_NAME)...."
