@@ -5,7 +5,7 @@ MAINTAINER https://github.com/surenderthakran
 ENV GOPATH /workspace
 ENV PATH "$PATH:$GOPATH/bin"
 
-ADD ./ $GOPATH
+COPY ./ $GOPATH
 
 WORKDIR $GOPATH
 
