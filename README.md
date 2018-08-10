@@ -13,7 +13,7 @@
 ### How To Use:
 #### To build docker image for the go application:
 ```
-docker build -t go_app .
+docker build --no-cache=true -t go_app .
 ```
 
 #### To run docker container:
